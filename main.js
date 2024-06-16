@@ -51,13 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Menampilkan informasi pada masing-masing section dengan format angka
         document.getElementById(
           "totalCost"
-        ).innerHTML = `${totalCost.toLocaleString()} €`;
+        ).innerHTML = `€ ${totalCost.toLocaleString()}`;
         document.getElementById(
           "totalRevenue"
-        ).innerHTML = `${totalRevenue.toLocaleString()} €`;
+        ).innerHTML = `€ ${totalRevenue.toLocaleString()}`;
         document.getElementById(
           "totalProfit"
-        ).innerHTML = `${totalProfit.toLocaleString()} €`;
+        ).innerHTML = `€ ${totalProfit.toLocaleString()}`;
         document.getElementById(
           "totalSales"
         ).innerHTML = `${totalSales.toLocaleString()}`;
@@ -264,13 +264,12 @@ document.addEventListener("DOMContentLoaded", function () {
             align: "end",
             color: "black",
             formatter: function (value) {
-              return new Intl.NumberFormat("id-ID", {
+              return new Intl.NumberFormat("en-US", {
                 notation: "compact",
                 compactDisplay: "short",
-                maximumFractionDigits: 2, // Menyimpan format desimal untuk label data
-              })
-                .format(value)
-                .replace("M", "jt"); // Mengubah 'M' menjadi 'jt'
+                style: "currency",
+                currency: "EUR"
+              }).format(value).replace("M", "M").replace("K", "k");
             },
             font: {
               weight: "bold",
@@ -302,14 +301,13 @@ document.addEventListener("DOMContentLoaded", function () {
               callback: function (value) {
                 return value < 1000
                   ? value
-                  : new Intl.NumberFormat("id-ID", {
-                      notation: "compact",
-                      compactDisplay: "short",
-                      maximumFractionDigits: 1, // Menghapus angka desimal untuk sumbu Y
-                    })
-                      .format(Math.round(value))
-                      .replace("M", "jt"); // Mengubah 'M' menjadi 'jt'
-              },
+                  : new Intl.NumberFormat("en-US", {
+                    notation: "compact",
+                    compactDisplay: "short",
+                    style: "currency",
+                    currency: "EUR"
+                  }).format(value).replace("M", "M").replace("K", "k");
+                },
               font: {
                 size: fontSize, // Menentukan ukuran font untuk label sumbu y
               },
@@ -363,11 +361,10 @@ document.addEventListener("DOMContentLoaded", function () {
             align: "end",
             color: "black",
             formatter: function (value) {
-              return new Intl.NumberFormat("id-ID", {
+              return new Intl.NumberFormat("en-US", {
                 notation: "compact",
                 compactDisplay: "short",
-                maximumFractionDigits: 2,
-              }).format(value);
+              }).format(value).replace("M", "M").replace("K", "k");
             },
             font: {
               weight: "bold",
@@ -400,12 +397,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Menampilkan nilai tanpa koma jika nilainya di bawah 1000
                 return value < 1000
                   ? value
-                  : new Intl.NumberFormat("id-ID", {
-                      notation: "compact",
-                      compactDisplay: "short",
-                      maximumFractionDigits: 1,
-                    }).format(value);
-              },
+                  : new Intl.NumberFormat("en-US", {
+                    notation: "compact",
+                    compactDisplay: "short",
+                  }).format(value).replace("M", "M").replace("K", "k");
+                },
               font: {
                 size: fontSize, // Menentukan ukuran font untuk label sumbu y
               },
@@ -466,11 +462,10 @@ document.addEventListener("DOMContentLoaded", function () {
             align: "center",
             color: "white",
             formatter: function (value) {
-              return new Intl.NumberFormat("id-ID", {
+              return new Intl.NumberFormat("en-US", {
                 notation: "compact",
                 compactDisplay: "short",
-                maximumFractionDigits: 2,
-              }).format(value);
+              }).format(value).replace("M", "M").replace("K", "k");
             },
             font: {
               size: fontSize, // Ukuran font
@@ -500,11 +495,10 @@ document.addEventListener("DOMContentLoaded", function () {
               stepSize: Math.ceil(maxValue / 5), // Menentukan step size
               color: "black",
               callback: function (value) {
-                return new Intl.NumberFormat("id-ID", {
+                return new Intl.NumberFormat("en-US", {
                   notation: "compact",
                   compactDisplay: "short",
-                  maximumFractionDigits: 1,
-                }).format(value);
+                }).format(value).replace("M", "M").replace("K", "k");
               },
               font: {
                 size: fontSize, // Menentukan ukuran font untuk label sumbu x
@@ -560,12 +554,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     align: 'center',
                     color: 'white',
                     formatter: function (value) {
-                        return new Intl.NumberFormat('id-ID', {
-                            notation: 'compact',
-                            compactDisplay: 'short',
-                            maximumFractionDigits: 2
-                        }).format(value);
-                    },
+                        return new Intl.NumberFormat("en-US", {
+                          notation: "compact",
+                          compactDisplay: "short",
+                          style: "currency",
+                          currency: "EUR"
+                        }).format(value).replace("M", "M").replace("K", "k");
+                      },
                     font: {
                         size: fontSize, // Ukuran font
                         weight: 'bold',
@@ -594,12 +589,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         stepSize: Math.ceil(maxValue / 5), // Menentukan step size
                         color: "black",
                         callback: function (value) {
-                            return new Intl.NumberFormat('id-ID', {
-                                notation: 'compact',
-                                compactDisplay: 'short',
-                                maximumFractionDigits: 1
-                            }).format(value);
-                        },
+                            return new Intl.NumberFormat("en-US", {
+                              notation: "compact",
+                              compactDisplay: "short",
+                              style: "currency",
+                              currency: "EUR"
+                            }).format(value).replace("M", "M").replace("K", "k");
+                          },
                         font: {
                             size: fontSize // Menentukan ukuran font untuk label sumbu x
                           }
@@ -661,12 +657,11 @@ document.addEventListener("DOMContentLoaded", function () {
                       stepSize: Math.ceil(maxValue / 5), // Menentukan step size
                       color: "black",
                       callback: function (value) {
-                        return new Intl.NumberFormat('id-ID', {
-                            notation: 'compact',
-                            compactDisplay: 'short',
-                            maximumFractionDigits: 1
-                        }).format(value);
-                    },
+                        return new Intl.NumberFormat("en-US", {
+                          notation: "compact",
+                          compactDisplay: "short",
+                        }).format(value).replace("M", "M").replace("K", "k");
+                      },
                       font: {
                         size: fontSize // Menentukan ukuran font untuk label sumbu x
                       }
@@ -688,12 +683,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     align: 'center',
                     color: 'white',
                     formatter: function(value) {
-                        return new Intl.NumberFormat('id-ID', {
-                            notation: 'compact',
-                            compactDisplay: 'short',
-                            maximumFractionDigits: 2
-                        }).format(value);
-                    },
+                        return new Intl.NumberFormat("en-US", {
+                          notation: "compact",
+                          compactDisplay: "short",
+                        }).format(value).replace("M", "M").replace("K", "k");
+                      },
                     font: {
                         size: fontSize, // Ukuran font
                         weight: 'bold',
